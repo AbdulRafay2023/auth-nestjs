@@ -21,4 +21,8 @@ export class AuthService {
         //  5. return token in response
         return this.userService.createUser({...userRegisterDto, password: hash});
     }
+
+    getUser() {
+        return this.userService.getUser();
+    }
 }
