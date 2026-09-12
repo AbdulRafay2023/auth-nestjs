@@ -5,6 +5,6 @@ import { userRegisterDto } from '../auth/user-register-dto';
 export class UserService {
 
     createUser(userRegisterDto: userRegisterDto) {
-     return {message: 'User created successfully'};
+     return {message: 'User created successfully Rafay'};
     }
 }
