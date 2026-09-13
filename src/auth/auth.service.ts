@@ -1,14 +1,17 @@
 import { Injectable } from '@nestjs/common';
-import { UserService } from '../user/user.service';
-import { userRegisterDto } from './user-register-dto';
+import { UserService } from '../user/user.service'; 
+import { userRegisterDto } from './dto/register.dto';
 import { JwtService } from '@nestjs/jwt';
 import   * as bcrypt from 'bcrypt';
+import { userLoginDto } from './dto/login.dto';
 
 @Injectable()
 export class AuthService {
    
     constructor(private readonly userService: UserService, private readonly jwtService: JwtService) {}
    
+
+    //user register
     async userRegister(userRegisterDto: userRegisterDto) {
         console.log('User Register DTO:', userRegisterDto);
 
@@ -21,12 +24,17 @@ export class AuthService {
         //  4. jwt token generate 
         //  5. return token in response
         const user = await this.userService.createUser({...userRegisterDto, password: hash});
-        const jwtToken = this.jwtService.sign({ email: user.email, sub: user.id });
-        return { ...user, token: jwtToken };
+        return user;
     }
 
     getUser() {
         return this.userService.getUser();
     }
+
+    //user login
+    userLogin(userLoginDto: userLoginDto){
+       
+    }
+
 
 }
