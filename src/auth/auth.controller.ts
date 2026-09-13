@@ -21,9 +21,12 @@ export class AuthController {
   }
 
   //user login
+  
   @Post('login')
-   userLoginIn(@Body() signInDto: userLoginDto) {
-    return this.authService.userLogin(signInDto);
+  userLogin(@Body() userLoginDto: userLoginDto) {
+
+    return this.authService.userLogin(userLoginDto);
+
   }
   }
 

@@ -4,6 +4,7 @@ import { userRegisterDto } from './dto/register.dto';
 import { JwtService } from '@nestjs/jwt';
 import   * as bcrypt from 'bcrypt';
 import { userLoginDto } from './dto/login.dto';
+import { response } from 'express';
 
 @Injectable()
 export class AuthService {
@@ -32,8 +33,39 @@ export class AuthService {
     }
 
     //user login
-    userLogin(userLoginDto: userLoginDto){
-       
+    async userLogin(userLoginDto: userLoginDto){
+
+        //1. Find user by email
+        const user = await this.userService.findUserByEmail(
+            userLoginDto.email
+        )
+
+        //check user exitst
+        if(!user){
+            return{
+                message: "Invalid email or password"
+            };
+        }
+
+        //compare passoword
+        const passwordMatch = await bcrypt.compare(userLoginDto.password, user?.password);
+
+        if(!passwordMatch){
+            return{
+                message: "Invalid email or password"
+            }
+        }
+
+        //generate jwt token
+        const token = this.jwtService.sign({
+            email: user?.email,
+            sub : user?.id       
+        })
+         
+        return {
+            message: "Login Successfully rafay",
+            token : token,
+        }
     }
 
 

@@ -20,4 +20,13 @@ export class UserService {
     getUser() {
         return this.prisma.user.findMany();
     }
+
+    //find user by email
+    async findUserByEmail(email:string){
+      return this.prisma.user.findUnique({
+        where: {
+          email : email,
+        },
+      })
+    }
 }
