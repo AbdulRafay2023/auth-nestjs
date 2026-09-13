@@ -397,7 +397,8 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 
 
 export const ModelName = {
-  User: 'User'
+  User: 'User',
+  Otp: 'Otp'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -413,7 +414,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user"
+    modelProps: "user" | "otp"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -483,6 +484,72 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    Otp: {
+      payload: Prisma.$OtpPayload<ExtArgs>
+      fields: Prisma.OtpFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.OtpFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OtpPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.OtpFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OtpPayload>
+        }
+        findFirst: {
+          args: Prisma.OtpFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OtpPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.OtpFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OtpPayload>
+        }
+        findMany: {
+          args: Prisma.OtpFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OtpPayload>[]
+        }
+        create: {
+          args: Prisma.OtpCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OtpPayload>
+        }
+        createMany: {
+          args: Prisma.OtpCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        delete: {
+          args: Prisma.OtpDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OtpPayload>
+        }
+        update: {
+          args: Prisma.OtpUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OtpPayload>
+        }
+        deleteMany: {
+          args: Prisma.OtpDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.OtpUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        upsert: {
+          args: Prisma.OtpUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OtpPayload>
+        }
+        aggregate: {
+          args: Prisma.OtpAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateOtp>
+        }
+        groupBy: {
+          args: Prisma.OtpGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.OtpGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.OtpCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.OtpCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -535,6 +602,17 @@ export const UserScalarFieldEnum = {
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
 
 
+export const OtpScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  otp: 'otp',
+  expiresAt: 'expiresAt',
+  createdAt: 'createdAt'
+} as const
+
+export type OtpScalarFieldEnum = (typeof OtpScalarFieldEnum)[keyof typeof OtpScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -551,6 +629,13 @@ export const UserOrderByRelevanceFieldEnum = {
 } as const
 
 export type UserOrderByRelevanceFieldEnum = (typeof UserOrderByRelevanceFieldEnum)[keyof typeof UserOrderByRelevanceFieldEnum]
+
+
+export const OtpOrderByRelevanceFieldEnum = {
+  otp: 'otp'
+} as const
+
+export type OtpOrderByRelevanceFieldEnum = (typeof OtpOrderByRelevanceFieldEnum)[keyof typeof OtpOrderByRelevanceFieldEnum]
 
 
 
@@ -738,6 +823,7 @@ export interface PrismaClientOptionsWithAdapter extends PrismaClientBaseOptions 
 export type PrismaClientOptions = PrismaClientOptionsWithAccelerateUrl | PrismaClientOptionsWithAdapter
 export type GlobalOmitConfig = {
   user?: Prisma.UserOmit
+  otp?: Prisma.OtpOmit
 }
 
 /* Types for Logging */
