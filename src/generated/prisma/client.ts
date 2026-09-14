@@ -45,7 +45,7 @@ export { Prisma }
  */
 export type User = Prisma.UserModel
 /**
- * Model Otp
+ * Model OtpCode
  * 
  */
-export type Otp = Prisma.OtpModel
+export type OtpCode = Prisma.OtpCodeModel

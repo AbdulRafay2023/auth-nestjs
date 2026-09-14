@@ -52,7 +52,7 @@ export const AnyNull = runtime.AnyNull
 
 export const ModelName = {
   User: 'User',
-  Otp: 'Otp'
+  OtpCode: 'OtpCode'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -84,15 +84,15 @@ export const UserScalarFieldEnum = {
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
 
 
-export const OtpScalarFieldEnum = {
+export const OtpCodeScalarFieldEnum = {
   id: 'id',
-  userId: 'userId',
+  email: 'email',
   otp: 'otp',
   expiresAt: 'expiresAt',
   createdAt: 'createdAt'
 } as const
 
-export type OtpScalarFieldEnum = (typeof OtpScalarFieldEnum)[keyof typeof OtpScalarFieldEnum]
+export type OtpCodeScalarFieldEnum = (typeof OtpCodeScalarFieldEnum)[keyof typeof OtpCodeScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -113,9 +113,10 @@ export const UserOrderByRelevanceFieldEnum = {
 export type UserOrderByRelevanceFieldEnum = (typeof UserOrderByRelevanceFieldEnum)[keyof typeof UserOrderByRelevanceFieldEnum]
 
 
-export const OtpOrderByRelevanceFieldEnum = {
+export const OtpCodeOrderByRelevanceFieldEnum = {
+  email: 'email',
   otp: 'otp'
 } as const
 
-export type OtpOrderByRelevanceFieldEnum = (typeof OtpOrderByRelevanceFieldEnum)[keyof typeof OtpOrderByRelevanceFieldEnum]
+export type OtpCodeOrderByRelevanceFieldEnum = (typeof OtpCodeOrderByRelevanceFieldEnum)[keyof typeof OtpCodeOrderByRelevanceFieldEnum]
 
