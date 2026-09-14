@@ -30,6 +30,6 @@ export class EmailService {
        }
 
        console.log('Email Send:', data)
-       return data;
+       return data
     }
 }

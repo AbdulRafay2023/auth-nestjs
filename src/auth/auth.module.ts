@@ -16,7 +16,6 @@ import { PrismaModule } from '../prisma/prisma.module';
 
     JwtModule.registerAsync({
       imports: [ConfigModule],
-
       inject: [ConfigService],
 
       useFactory: (configService: ConfigService) => ({
